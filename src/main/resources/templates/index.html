@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Springcasts</title>
+</head>
+<body>
+<div align="center">
+    <h1>Lesson List</h1>
+    <a href="/lessons/create">Create New Lesson</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>Lesson ID</th>
+            <th>Name</th>
+            <th>Brand</th>
+            <th>Made In</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="lesson : ${lessons}">
+            <td th:text="${lesson.id}">Product ID</td>
+            <td th:text="${lesson.title}">Name</td>
+            <td th:text="${lesson.slug}">Brand</td>
+            <td th:text="${lesson.created_at}">Made in</td>
+            <td th:text="${lesson.updated_at}">Price</td>
+            <td>
+                <a th:href="@{'/lessons/' + ${lesson.id} + '/edit'}">Edit</a> |
+                <a th:href="@{'/lessons/' + ${lesson.id} + '/delete'}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
